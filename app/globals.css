@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ===== Google Fonts ===== */
+
+/* ===== Design Tokens (TikTok-Inspired Palette) ===== */
+:root {
+  /* Brand Colors */
+  --infhub-magenta: #FE2C55;
+  --infhub-cyan: #25F4EE;
+  --infhub-purple: #7C3AED;
+
+  /* Backgrounds */
+  --bg-primary: #020617;
+  --bg-surface: #0F172A;
+  --bg-elevated: #1E293B;
+  --bg-hover: #334155;
+
+  /* Text */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Borders */
+  --border-subtle: #1E293B;
+  --border-default: #334155;
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, #25F4EE 0%, #7C3AED 50%, #FE2C55 100%);
+  --gradient-brand-hover: linear-gradient(135deg, #1DE0DB 0%, #6D28D9 50%, #E11D48 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(2, 6, 23, 1) 100%);
+
+  /* Shadows */
+  --shadow-glow-magenta: 0 0 20px rgba(254, 44, 85, 0.3);
+  --shadow-glow-cyan: 0 0 20px rgba(37, 244, 238, 0.3);
+  --shadow-glow-brand: 0 0 30px rgba(124, 58, 237, 0.4);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.5);
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Fonts */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* ===== Light Theme Tokens (Home Page Only) ===== */
+.theme-light {
+  /* Brand — mantidos, mas cyan mais rico para fundo claro */
+  --infhub-magenta: #FE2C55;
+  --infhub-cyan: #06B6D4;
+  --infhub-purple: #7C3AED;
+
+  /* Backgrounds */
+  --bg-primary: #FFFFFF;
+  --bg-surface: #F8FAFC;
+  --bg-elevated: #F1F5F9;
+  --bg-hover: #E2E8F0;
+  --bg-section-alt: #F8FAFC;
+
+  /* Text */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+
+  /* Borders */
+  --border-subtle: #E2E8F0;
+  --border-default: #CBD5E1;
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, #06B6D4 0%, #7C3AED 50%, #FE2C55 100%);
+  --gradient-brand-hover: linear-gradient(135deg, #0891B2 0%, #6D28D9 50%, #E11D48 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 1) 100%);
+
+  /* Shadows — clean e suaves */
+  --shadow-glow-magenta: 0 0 24px rgba(254, 44, 85, 0.12);
+  --shadow-glow-cyan: 0 0 24px rgba(6, 182, 212, 0.12);
+  --shadow-glow-brand: 0 0 30px rgba(124, 58, 237, 0.12);
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 16px rgba(15, 23, 42, 0.08);
+  --shadow-card-hover: 0 4px 8px rgba(15, 23, 42, 0.08), 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+/* ===== Tailwind v4 Theme Inline ===== */
+@theme inline {
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-magenta: var(--infhub-magenta);
+  --color-cyan: var(--infhub-cyan);
+  --color-purple: var(--infhub-purple);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+  --color-muted: var(--text-muted);
+  --color-secondary: var(--text-secondary);
+  --color-border: var(--border-subtle);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+}
+
+/* ===== Base Styles ===== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* ===== Utility Classes ===== */
+.text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-brand {
+  background: var(--gradient-brand);
+}
+
+.bg-gradient-brand-hover {
+  background: var(--gradient-brand-hover);
+}
+
+.glow-magenta {
+  box-shadow: var(--shadow-glow-magenta);
+}
+
+.glow-cyan {
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.glow-brand {
+  box-shadow: var(--shadow-glow-brand);
+}
+
+.glass {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(30, 41, 59, 0.5);
+}
+
+.glass-strong {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(30, 41, 59, 0.6);
+}
+
+/* Light theme glass variants */
+.theme-light .glass {
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.theme-light .glass-strong {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(226, 232, 240, 1);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.08);
+}
+
+/* ===== Clean Card Shadow ===== */
+.shadow-clean {
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.shadow-clean:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* ===== Section Alternating Background ===== */
+.section-alt {
+  background-color: var(--bg-section-alt, var(--bg-surface));
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-hover);
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(254, 44, 85, 0.3);
+  color: var(--text-primary);
+}
