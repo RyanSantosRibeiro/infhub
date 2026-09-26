@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/app/components/ui/button";
 import { Lightning, List, X } from "@phosphor-icons/react";
+import { AuthModal } from "@/app/components/ui/auth-modal";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -18,6 +19,14 @@ interface HeaderProps {
 export function Header({ theme = "dark" }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
+
+  const openAuthModal = (mode: "login" | "register") => {
+    setAuthMode(mode);
+    setAuthModalOpen(true);
+    setMobileOpen(false);
+  };
   const isLight = theme === "light";
 
   useEffect(() => {
@@ -65,10 +74,10 @@ export function Header({ theme = "dark" }: HeaderProps) {
 
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm" onClick={() => openAuthModal("login")}>
             Entrar
           </Button>
-          <Button variant="primary" size="sm">
+          <Button variant="primary" size="sm" onClick={() => openAuthModal("register")}>
             Começar Grátis
           </Button>
         </div>
@@ -107,11 +116,17 @@ export function Header({ theme = "dark" }: HeaderProps) {
             </Link>
           ))}
           <div className={`pt-4 border-t flex flex-col gap-3 ${isLight ? "border-slate-200" : "border-[var(--border-subtle)]"}`}>
-            <Button variant="outline" fullWidth>Entrar</Button>
-            <Button variant="primary" fullWidth>Começar Grátis</Button>
+            <Button variant="outline" fullWidth onClick={() => openAuthModal("login")}>Entrar</Button>
+            <Button variant="primary" fullWidth onClick={() => openAuthModal("register")}>Começar Grátis</Button>
           </div>
         </div>
       )}
+
+      <AuthModal 
+        isOpen={authModalOpen} 
+        onClose={() => setAuthModalOpen(false)} 
+        defaultMode={authMode} 
+      />
     </header>
   );
 }

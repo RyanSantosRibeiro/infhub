@@ -1,0 +1,5 @@
+import Image from "next/image";
+import type { OverlayTemplate } from "@/lib/store/catalog";
+export function OverlayPreview({ template, large = false }: { template: OverlayTemplate; large?: boolean }) {
+  return <div className={`overlay-preview preview-${template.theme} ${large ? "preview-large" : ""}`}>{template.image && <Image src={template.image} fill alt={`Preview do overlay ${template.name}`} sizes={large ? "850px" : "(max-width: 640px) 95vw, (max-width: 1000px) 45vw, 30vw"} />}<div className="preview-wash"/><div className="preview-frame"/><div className="preview-top"><span><i/> {template.theme === "cozy" ? "COZY CLUB" : "YOUR STREAM"}</span><span>● ● ●</span></div><div className="preview-title"><span>{template.theme === "cozy" ? "pegue seu café. fique à vontade." : "WELCOME TO THE STREAM"}</span><strong>{template.label}</strong><small>{template.theme === "cozy" ? "um lugar pra chamar de seu ♡" : "STAY CLOSE. WE'RE ABOUT TO GO LIVE."}</small></div><div className="preview-bottom"><span>↗ @yourname</span><span>✦ GOOD VIBES ONLY</span></div><div className="preview-webcam"><span>YOUR CAM</span></div></div>;
+}

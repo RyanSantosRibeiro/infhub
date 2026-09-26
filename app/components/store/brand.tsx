@@ -1,0 +1,1 @@
+export function Brand() { return <span className="brand"><svg className="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 13V4h11M19 4h10v10M29 19v9H18M13 28H3V18" stroke="currentColor" strokeWidth="4"/><path d="m12 11 10 5-10 5V11Z" fill="currentColor"/></svg><span>frame<span className="brand-dot">.</span></span></span>; }

@@ -1,0 +1,4 @@
+import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { Brand } from "./brand";
+export function StoreFooter() { return <footer className="store-footer"><div className="shell"><div className="footer-top"><div><Link href="/"><Brand/></Link><p>Feito para quem nasceu pra criar.</p></div><nav aria-label="Links do rodapé"><a href="/#galeria">Overlays</a><a href="/#pacotes">Pacotes</a><Link href="/guia-obs">Guia OBS <ArrowUpRight size={14}/></Link><a href="/#faq">Dúvidas</a></nav><span className="made-in">Criatividade sem fronteiras.<br/>Feito no Brasil <span>✳</span></span></div><div className="footer-bottom"><span>© {new Date().getFullYear()} FRAME. Sua live. Sua identidade.</span><div><Link href="/termos">Termos de uso</Link><Link href="/privacidade">Privacidade</Link><span>PT-BR <span className="lime">●</span></span></div></div></div></footer>; }
